@@ -1,84 +1,106 @@
-# AI네이티브스쿨 HUB 사용 설명서
+# AI네이티브스쿨 HUB 설치 안내
 
-할 일마다 AI(Claude · Codex · Gemini)를 붙여 일을 맡기는 작업 공간이에요. AI네이티브스쿨 수강생용이에요. 처음 받는 분은 이 순서대로 하시면 돼요.
+할 일마다 AI를 한 명씩 붙여 일을 맡기는 작업 공간이에요. AI네이티브스쿨 수강생용이에요.
 
-## ⬇️ 설치 파일 받기
+**이 안내는 Windows 기준이에요.** 맥은 [맨 아래](#맥에서-설치하기)를 보세요.
 
-| 운영체제 | 다운로드 |
+## 시작 전에 확인하기
+
+- **Windows 10 (1809 이상) 또는 Windows 11**, 64비트
+- **Claude 유료 구독**(Pro 또는 Max). 무료 플랜으로는 Claude Code를 쓸 수 없어요.
+- 인터넷이 되는 컴퓨터. 다 하면 20분쯤 걸려요.
+
+HUB는 컴퓨터에 설치된 **Claude Code**(AI 프로그램)를 불러서 일해요. 그래서 **Claude Code를 먼저 설치하고 로그인한 다음** HUB를 설치해요.
+
+| 순서 | 할 일 |
 |---|---|
-| **Windows** (64비트) | **[AINativeSchool-HUB-Setup.exe 받기](https://github.com/khg629/AINativeSchool-HUB/releases/latest/download/AINativeSchool-HUB-Setup.exe)** |
-| macOS (M1 이상 애플 실리콘) | [AINativeSchool-HUB-mac-arm64.zip 받기](https://github.com/khg629/AINativeSchool-HUB/releases/latest/download/AINativeSchool-HUB-mac-arm64.zip) · 인텔 맥은 지원하지 않아요 |
-
-새 버전이 나와도 위 링크는 항상 최신 파일을 받아요. 바뀐 내용은 [릴리스 페이지](https://github.com/khg629/AINativeSchool-HUB/releases)에서 볼 수 있어요.
+| 1 | Git 설치 |
+| 2 | Claude Code 설치 |
+| 3 | Claude Code 로그인 |
+| 4 | HUB 설치 |
+| 5 | HUB에서 연결 확인 |
 
 ---
 
-## 1. HUB 설치
+## 1단계. Git 설치
 
-### Windows
-1. 받은 `AINativeSchool-HUB-Setup.exe`를 실행해요.
-2. "Windows의 PC 보호" 창이 뜨면 **추가 정보 → 실행**을 눌러요. (코드 서명이 없어서 뜨는 경고예요.)
-3. 시작 메뉴에서 **AI네이티브스쿨 HUB**를 열어요.
+AI가 명령을 실행할 때 쓰는 도구예요. 한 번만 설치하면 돼요.
 
-### macOS
-1. 받은 zip을 풀고 `AINativeSchool HUB.app`을 **응용 프로그램** 폴더로 옮겨요.
-2. 터미널(응용 프로그램 › 유틸리티 › 터미널)을 열고 아래를 한 번 실행해요. 안 하면 "손상되었기 때문에 열 수 없습니다"가 떠요.
+1. [git-scm.com/download/win](https://git-scm.com/download/win)에 들어가 **Click here to download**를 눌러 설치 파일을 받아요.
+2. 받은 파일을 실행하고, 설정은 바꾸지 말고 **Next**만 계속 눌러 **Install**까지 진행해요.
+3. **Finish**를 누르면 끝이에요.
+
+---
+
+## 2단계. Claude Code 설치
+
+1. **PowerShell 열기**: 키보드의 **Windows 키**를 누르고 `powershell`을 입력한 뒤 **Windows PowerShell**을 눌러요. (관리자 권한은 필요 없어요.)
+2. 아래 명령을 복사해서 PowerShell 창에 붙여 넣고 **Enter**를 눌러요. 붙여 넣기는 **마우스 오른쪽 클릭** 또는 **Ctrl+V**예요.
+   ```powershell
+   irm https://claude.ai/install.ps1 | iex
    ```
-   xattr -cr "/Applications/AINativeSchool HUB.app"
+3. 설치 메시지가 끝나고 다시 입력할 수 있을 때까지 기다려요.
+4. **PowerShell 창을 닫고 새로 열어요.** (새 창이어야 방금 설치한 프로그램을 찾아요.)
+5. 새 창에서 아래를 입력해 설치를 확인해요. `2.1.xxx (Claude Code)`처럼 버전이 나오면 성공이에요.
+   ```powershell
+   claude --version
    ```
-3. 앱을 열어요. Dock과 메뉴에는 **AI네이티브스쿨 HUB**로 보여요.
 
-처음 열면 **👋 HUB 시작하기** 태스크와 **✍️ 첫 일 맡겨보기** 태스크가 들어 있어요. 시작하기 메모를 먼저 읽어 보세요.
-
----
-
-## 2. AI 연결하기
-
-HUB는 컴퓨터에 설치된 AI 프로그램(CLI)을 불러 써요. **Claude는 꼭 필요하고**, Codex와 Gemini는 쓰고 싶을 때만 설치하면 돼요.
-
-| AI | 필요한 계정 | 필수 |
-|---|---|---|
-| Claude (Claude Code) | Claude Pro 또는 Max 구독 | ✅ |
-| Codex | ChatGPT Plus 이상 구독 | 선택 |
-| Gemini (Antigravity CLI) | Google 계정 | 선택 |
-
-> 명령어는 **터미널**(맥) 또는 **PowerShell**(윈도우: 시작 메뉴에서 "PowerShell" 검색)에 붙여 넣고 Enter를 누르면 돼요.
-> **설치가 끝나면 터미널을 닫았다가 새로 열어야** 다음 명령이 인식돼요.
-
-### ① Claude (필수)
-설치:
-- 맥: `curl -fsSL https://claude.ai/install.sh | bash`
-- 윈도우: `irm https://claude.ai/install.ps1 | iex`
-
-로그인: 새 터미널에서 `claude`를 실행하면 브라우저가 열려요. Claude 계정으로 로그인하고, 터미널에 "Welcome"이 보이면 `/exit`로 나와요.
-
-윈도우는 [Git for Windows](https://git-scm.com/download/win)도 설치해 두는 걸 권장해요.
-
-### ② Codex (선택)
-1. [Node.js](https://nodejs.org) LTS 버전을 먼저 설치해요.
-2. 설치: `npm i -g @openai/codex` (맥은 `brew install --cask codex`도 돼요)
-3. 로그인: `codex`를 실행하고 **Sign in with ChatGPT**를 골라 ChatGPT 계정으로 로그인해요.
-
-윈도우에서는 Codex가 아직 시험 단계라 잘 안 될 수 있어요.
-
-### ③ Gemini (선택)
-설치:
-- 맥: `curl -fsSL https://antigravity.google/cli/install.sh | bash`
-- 윈도우: `irm https://antigravity.google/cli/install.ps1 | iex`
-
-로그인: 새 터미널에서 `agy`를 실행하고 Google 계정으로 로그인해요.
-
-### ④ 연결 확인
-1. AI를 설치하고 로그인했으면 **HUB를 완전히 껐다가 다시 켜요.** HUB는 켤 때 AI를 찾아요.
-   - 맥: 화면 위 메뉴 막대의 HUB 아이콘 › **AI네이티브스쿨 HUB 종료** (창만 닫으면 백그라운드에 남아 있어요)
-2. **설정(⌘, / Ctrl+,) › 에이전트 기본값**에서 AI 목록을 봐요.
-   - 이름만 보이면 연결 완료
-   - **— 미설치**: 설치가 안 됐거나 HUB가 못 찾았어요. 설치 후 HUB를 다시 켰는지 확인하세요.
-   - **— 로그인 필요**: 터미널에서 다시 로그인하세요.
+> **"claude 용어가 cmdlet, 함수… 이름으로 인식되지 않습니다"가 나오면**
+> 아래 두 줄을 붙여 넣고 Enter를 누른 다음, PowerShell을 닫았다 새로 열고 5번을 다시 해요.
+> ```powershell
+> $currentPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
+> [Environment]::SetEnvironmentVariable('PATH', "$currentPath;$env:USERPROFILE\.local\bin", 'User')
+> ```
 
 ---
 
-## 3. 처음 써 보기
+## 3단계. Claude Code 로그인
+
+1. PowerShell에서 아래를 입력하고 Enter를 눌러요.
+   ```powershell
+   claude
+   ```
+2. 처음에는 화면 색(테마) 같은 질문이 나와요. **Enter**로 기본값을 골라 넘어가요.
+3. 로그인 방법을 물으면 **Claude 구독 계정**(Claude account with subscription)을 골라요.
+4. 브라우저가 열리면 Claude 계정으로 로그인하고 **승인**(Authorize)을 눌러요.
+   - 브라우저가 안 열리면 PowerShell에 나온 주소를 복사해 브라우저에 붙여 넣어요.
+   - 브라우저에 코드가 나오면 복사해서 PowerShell에 붙여 넣고 Enter를 눌러요.
+5. PowerShell에 Claude 입력창이 나오면 로그인 성공이에요. `/exit`를 입력해 나와요.
+
+---
+
+## 4단계. HUB 설치
+
+1. 아래 링크로 설치 파일을 받아요.
+
+   ### ⬇️ [AINativeSchool-HUB-Setup.exe 받기](https://github.com/khg629/AINativeSchool-HUB/releases/latest/download/AINativeSchool-HUB-Setup.exe)
+
+2. 받은 `AINativeSchool-HUB-Setup.exe`를 실행해요.
+3. **"Windows의 PC 보호"** 파란 창이 뜨면 **추가 정보**를 누르고 **실행**을 눌러요. (코드 서명이 없어서 뜨는 경고예요.)
+4. 설치 화면이 나오면 아무것도 바꾸지 말고 **다음**(또는 **설치**)을 눌러 진행하고, 마지막에 **마침**을 눌러요.
+5. 시작 메뉴나 바탕화면의 **AI네이티브스쿨 HUB**를 열어요.
+
+---
+
+## 5단계. HUB에서 연결 확인
+
+1. HUB 오른쪽 위 **설정**(또는 **Ctrl + ,**)을 눌러요.
+2. **에이전트 기본값**의 AI 목록에서 **Claude Code**를 봐요.
+   - 이름만 보이면 **연결 완료**예요.
+   - **— 미설치**: HUB가 Claude Code를 찾지 못했어요. 아래 "HUB 완전히 껐다 켜기"를 해 보고, 그래도 같으면 2단계를 다시 확인해요.
+   - **— 로그인 필요**: 3단계를 다시 해요.
+3. 왼쪽 목록의 **✍️ 첫 일 맡겨보기**를 열고 가운데 입력창에 아무 일이나 적어 보내 보세요. AI가 답하면 모든 준비가 끝났어요. 🎉
+
+> **HUB 완전히 껐다 켜기**
+> 창의 X를 눌러도 HUB는 꺼지지 않고 작업 표시줄 오른쪽 아래(시계 옆 **^** 안)에 남아 있어요.
+> 그 아이콘을 **오른쪽 클릭 › AI네이티브스쿨 HUB 종료**를 누른 다음, 다시 열어요. HUB는 켤 때 AI를 찾아요.
+
+---
+
+## 처음 써 보기
+
+처음 열면 **👋 HUB 시작하기**와 **✍️ 첫 일 맡겨보기** 태스크가 들어 있어요. 시작하기 메모를 먼저 읽고, 첫 일 맡겨보기의 예시를 그대로 보내 보세요.
 
 1. **태스크 만들기**: 왼쪽 위 "태스크 추가"에 할 일을 적고 **추가**. `#프로젝트이름`을 붙이면 그 프로젝트로 들어가요.
 2. **AI에게 맡기기**: 가운데 입력창에 하고 싶은 일을 적고 보내요. AI가 일하는 동안 다른 태스크를 봐도 돼요. 끝나면 알림이 와요.
@@ -93,7 +115,7 @@ HUB는 컴퓨터에 설치된 AI 프로그램(CLI)을 불러 써요. **Claude는
 
 ---
 
-## 4. 팀에 맡기기
+## 팀에 맡기기
 
 위쪽 **팀**을 누르면 세 팀이 준비되어 있어요. 팀마다 일하는 방식(팀 기억), 역할별 에이전트, 바로 쓸 수 있는 스킬이 들어 있어요.
 
@@ -110,7 +132,7 @@ HUB는 컴퓨터에 설치된 AI 프로그램(CLI)을 불러 써요. **Claude는
 
 ---
 
-## 5. 일정 (Google 캘린더)
+## 일정 (Google 캘린더)
 
 왼쪽 **일정비서**에게 "목요일 오후 3시 스터디 모임 잡아줘"처럼 말하면 일정을 잡아 줘요. 위쪽 **일정**에서 태스크 마감과 Google 일정을 같이 봐요.
 
@@ -122,7 +144,7 @@ Google 캘린더 연결은 처음 한 번만 해요. **설정 › Google 캘린�
 
 ---
 
-## 6. 더 쓰기 (선택)
+## 더 쓰기 (선택)
 
 - **Gmail · Notion 같은 서비스**: [claude.ai](https://claude.ai) › 설정 › 커넥터에서 연결한 뒤, HUB **설정 › 커넥터 허용**에서 켜요.
 - **AI가 브라우저 쓰게 하기**: **설정 › AI 브라우저 조작**을 켜면, AI가 오른쪽 브라우저 창에서 페이지를 열고 읽고 눌러요.
@@ -130,10 +152,36 @@ Google 캘린더 연결은 처음 한 번만 해요. **설정 › Google 캘린�
 
 ---
 
+## 다른 AI도 쓰고 싶다면 (선택)
+
+Claude만 있어도 HUB를 다 쓸 수 있어요. 다른 AI도 붙이고 싶을 때만 설치해요. 설치한 뒤에는 **HUB를 완전히 껐다 켜요.**
+
+### Codex (ChatGPT Plus 이상 구독)
+1. [nodejs.org](https://nodejs.org)에서 **LTS** 버전을 받아 설치해요.
+2. PowerShell을 새로 열고 설치해요.
+   ```powershell
+   npm.cmd install -g @openai/codex
+   ```
+3. `codex`를 입력하고 **Sign in with ChatGPT**를 골라 ChatGPT 계정으로 로그인해요.
+
+Windows에서는 Codex가 아직 시험 단계라 잘 안 될 수 있어요.
+
+### Gemini (Google 계정)
+1. PowerShell에서 설치해요.
+   ```powershell
+   irm https://antigravity.google/cli/install.ps1 | iex
+   ```
+2. PowerShell을 새로 열고 `agy`를 입력해 Google 계정으로 로그인해요.
+
+---
+
 ## 자주 묻는 것
 
 **Q. AI에게 보냈는데 아무 반응이 없어요.**
-설정 › 에이전트 기본값에서 그 AI가 "미설치"나 "로그인 필요"인지 보세요. 터미널에서 `claude`(또는 `codex`, `agy`)를 직접 실행해 로그인이 살아 있는지 확인하고, HUB를 다시 켜 보세요.
+설정 › 에이전트 기본값에서 Claude Code 옆에 "미설치"나 "로그인 필요"가 있는지 보세요. PowerShell에서 `claude`를 입력해 로그인이 살아 있는지 확인하고, HUB를 완전히 껐다 켜 보세요.
+
+**Q. PowerShell에서 "이 시스템에서 스크립트를 실행할 수 없으므로…"가 나와요.**
+`npm` 대신 `npm.cmd`로 입력하면 돼요. (예: `npm.cmd install -g @openai/codex`)
 
 **Q. "모두 허용"인데도 명령이 막혔다고 나와요.**
 지우는 명령처럼 위험할 수 있는 건 AI 프로그램 자체의 안전장치가 막아요. 권한 설정과는 무관해요. AI에게 다시 시키면 보통 안전한 방식으로 고쳐서 실행해요.
@@ -141,5 +189,27 @@ Google 캘린더 연결은 처음 한 번만 해요. **설정 › Google 캘린�
 **Q. 사용량은 어디서 빠지나요?**
 각자의 구독에서 빠져요. Claude는 Claude 플랜, Codex는 ChatGPT 플랜, Gemini는 Google 계정 한도를 써요. HUB 아래쪽 막대에 남은 양이 보여요.
 
+**Q. 새 버전은 어떻게 받나요?**
+위 4단계 링크로 다시 받아 설치하면 돼요. 내 태스크와 메모는 그대로 남아요.
+
 **Q. 새 모델이 안 보여요.**
 설정 › 에이전트 기본값 › **AI CLI 업데이트**를 눌러요.
+
+---
+
+## 맥에서 설치하기
+
+M1 이상(애플 실리콘) 맥만 지원해요. 인텔 맥은 지원하지 않아요.
+
+1. **Claude Code 설치**: 터미널(응용 프로그램 › 유틸리티 › 터미널)을 열고 아래를 실행해요.
+   ```
+   curl -fsSL https://claude.ai/install.sh | bash
+   ```
+2. **로그인**: 터미널을 새로 열고 `claude`를 실행해 브라우저에서 로그인한 뒤 `/exit`로 나와요.
+3. **HUB 받기**: [AINativeSchool-HUB-mac-arm64.zip 받기](https://github.com/khg629/AINativeSchool-HUB/releases/latest/download/AINativeSchool-HUB-mac-arm64.zip)
+4. zip을 풀고 `AINativeSchool HUB.app`을 **응용 프로그램** 폴더로 옮겨요.
+5. 터미널에서 아래를 한 번 실행해요. 안 하면 "손상되었기 때문에 열 수 없습니다"가 떠요.
+   ```
+   xattr -cr "/Applications/AINativeSchool HUB.app"
+   ```
+6. 앱을 열고 위 **5단계**처럼 연결을 확인해요. (설정은 **⌘ ,**, 완전히 끄기는 메뉴 막대 아이콘 › **AI네이티브스쿨 HUB 종료**)
